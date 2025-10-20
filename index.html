@@ -16,9 +16,9 @@
             theme: {
                 extend: {
                     colors: {
-                        'primary': '#0D47A1', // Azul oscuro
+                        'primary': '#0D47A1', // Azul oscuro (resaltado principal)
                         'secondary': '#1565C0', // Azul medio
-                        'accent': '#FFC107', // Amarillo para acentos
+                        'accent': '#FFC107', // Amarillo (resaltado crítico)
                         'dark-bg': '#1A202C', // Fondo en modo oscuro
                         'dark-card': '#2D3748', // Tarjetas en modo oscuro
                     },
@@ -54,6 +54,10 @@
         body, header, section, button, div {
             transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
         }
+        /* Estilo para el ícono de Acordeón (girar al abrir) */
+        .accordion-header[aria-expanded="true"] .accordion-icon {
+            transform: rotate(45deg);
+        }
     </style>
 </head>
 <body class="bg-gray-50 dark:bg-dark-bg font-sans p-4 sm:p-8">
@@ -64,15 +68,15 @@
         <header class="py-8 px-4 bg-white dark:bg-dark-card shadow-lg rounded-xl mb-8 flex justify-between items-center">
             <div>
                 <h1 class="text-2xl sm:text-3xl font-extrabold text-primary dark:text-gray-100">
-                    🇪🇸 Asesor de *Ecommerce* España
+                    🇪🇸 Asesor de <span class="text-accent">Ecommerce</span> España
                 </h1>
                 <p class="mt-1 text-md text-gray-600 dark:text-gray-400">
-                    Guía completa y actualizada.
+                    Guía completa y actualizada para la consultoría.
                 </p>
             </div>
             
             <!-- Botón de Modo Oscuro/Claro -->
-            <button id="theme-toggle" class="p-3 rounded-full bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-accent shadow-md hover:ring-2 ring-accent">
+            <button id="theme-toggle" class="p-3 rounded-full bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-accent shadow-md hover:ring-2 ring-accent transition-colors">
                 <i data-lucide="sun" id="sun-icon" class="w-6 h-6"></i>
                 <i data-lucide="moon" id="moon-icon" class="w-6 h-6 hidden"></i>
             </button>
@@ -82,56 +86,56 @@
         <main class="space-y-6">
 
             <!-- Sección 1: Constitución Legal y Fiscal -->
-            <section class="bg-white dark:bg-dark-card p-6 rounded-xl shadow-lg border-t-4 border-primary hover:shadow-2xl hover:scale-[1.005]">
-                <button class="accordion-header w-full text-left flex justify-between items-center py-2" data-target="content-legal">
+            <section class="bg-white dark:bg-dark-card p-6 rounded-xl shadow-lg border-t-4 border-primary hover:shadow-2xl hover:scale-[1.005] transition-shadow duration-300">
+                <button class="accordion-header w-full text-left flex justify-between items-center py-2" data-target="content-legal" aria-expanded="false">
                     <h2 class="text-xl sm:text-2xl font-semibold text-gray-800 dark:text-gray-100">
-                        1. ⚖️ Legalidad y Fiscalidad: La Base del Negocio
+                        1. ⚖️ Legalidad y Fiscalidad: La <span class="font-bold text-primary dark:text-accent">Base del Negocio</span>
                     </h2>
-                    <span class="text-primary dark:text-accent text-2xl transform transition-transform duration-300">
+                    <span class="accordion-icon text-primary dark:text-accent text-2xl transform transition-transform duration-300">
                         +
                     </span>
                 </button>
                 <div id="content-legal" class="accordion-content pt-4 text-gray-700 dark:text-gray-300">
                     <p class="mb-4 font-medium">
-                        Elige tu camino: *Autónomo* para empezar con flexibilidad o Sociedad Limitada (SL) para proteger tu patrimonio y escalar.
+                        Elige tu camino: <span class="font-bold text-secondary">Autónomo</span> para empezar con flexibilidad o Sociedad Limitada (SL) para proteger tu patrimonio y escalar.
                     </p>
 
                     <div class="space-y-4 border-l-4 border-secondary dark:border-primary pl-4">
                         <h3 class="text-lg font-bold text-primary dark:text-accent">A. Proceso de Creación de Sociedad (SL) 📝</h3>
                         <ul class="list-none space-y-2">
                             <li class="p-3 bg-gray-100 dark:bg-gray-700 rounded-lg shadow-sm">
-                                <strong>1. 🏷️ Nombre:</strong> Certificación Negativa de Nombre (CNR) en el RMC.
+                                <span class="font-semibold">1. 🏷️ Nombre:</span> Certificación Negativa de Nombre (CNR) en el RMC.
                             </li>
                             <li class="p-3 bg-gray-100 dark:bg-gray-700 rounded-lg shadow-sm">
-                                <strong>2. 🏦 Capital:</strong> Apertura de Cuenta y depósito del Capital Social mínimo (3.000€).
+                                <span class="font-semibold">2. 🏦 Capital:</span> Apertura de Cuenta y depósito del Capital Social mínimo (<span class="font-bold text-green-500">3.000€</span>).
                             </li>
                             <li class="p-3 bg-gray-100 dark:bg-gray-700 rounded-lg shadow-sm">
-                                <strong>3. ✒️ Firma:</strong> Escritura Pública ante Notario.
+                                <span class="font-semibold">3. ✒️ Firma:</span> Escritura Pública ante Notario.
                             </li>
                             <li class="p-3 bg-gray-100 dark:bg-gray-700 rounded-lg shadow-sm">
-                                <strong>4. 🆔 NIF Provisional:</strong> Alta Censal (Modelo 036) en la AEAT.
+                                <span class="font-semibold">4. 🆔 NIF Provisional:</span> Alta Censal (Modelo 036) en la AEAT.
                             </li>
                             <li class="p-3 bg-gray-100 dark:bg-gray-700 rounded-lg shadow-sm">
-                                <strong>5. 🏛️ Registro:</strong> Inscripción en el Registro Mercantil.
+                                <span class="font-semibold">5. 🏛️ Registro:</span> Inscripción en el Registro Mercantil.
                             </li>
                             <li class="p-3 bg-gray-100 dark:bg-gray-700 rounded-lg shadow-sm">
-                                <strong>6. ✅ NIF Definitivo.</strong>
+                                <span class="font-semibold">6. ✅ NIF Definitivo.</span>
                             </li>
                         </ul>
 
                         <h3 class="text-lg font-bold text-primary dark:text-accent pt-3">B. NIF/CIF, ROI y Cumplimiento Normativo Europeo 🇪🇺</h3>
                         <ul class="list-disc ml-6 space-y-3">
                             <li>
-                                <strong>VAT-ID (ROI):</strong> Crucial para la compra/venta intracomunitaria. Debes solicitar la inclusión en el Registro de Operadores Intracomunitarios (Modelo 036).
+                                <span class="font-bold text-primary">VAT-ID (ROI):</span> Crucial para la compra/venta intracomunitaria.
                             </li>
                             <li>
-                                <strong>RGPD y LSSI:</strong> Máxima prioridad. Debes tener textos legales actualizados, consentimiento de *cookies*, y notificar a la AEPD en **72 horas** ante cualquier brecha de datos.
+                                <span class="font-bold">RGPD y LSSI:</span> Máxima prioridad. Notificar a la AEPD en <span class="font-bold text-red-500">72 horas</span> ante cualquier brecha.
                             </li>
                             <li>
-                                <strong>PSD2 (SCA):</strong> Asegura que tus pasarelas de pago cumplen con la **Autenticación Reforzada del Cliente** para transacciones seguras. 🔒
+                                <span class="font-bold">PSD2 (SCA):</span> Asegura el cumplimiento de la <span class="font-bold text-secondary">Autenticación Reforzada del Cliente</span>. 🔒
                             </li>
                             <li>
-                                <strong>🚨 Accesibilidad (WCAG 2025):</strong> La nueva normativa europea exige que tu *ecommerce* sea **accesible**. El incumplimiento, especialmente para PYMES grandes, puede llevar a multas y hasta la **suspensión temporal** de la actividad. ¡Anticípate!
+                                <span class="font-bold text-red-600 dark:text-red-400">🚨 Accesibilidad (WCAG 2025):</span> Tu *ecommerce* debe ser <span class="font-extrabold">accesible</span>. El incumplimiento puede llevar a multas y hasta la <span class="font-extrabold text-accent">suspensión temporal</span> de la actividad.
                             </li>
                         </ul>
                     </div>
@@ -139,35 +143,34 @@
             </section>
 
             <!-- Sección 2: Importación y Aduanas (China) -->
-            <section class="bg-white dark:bg-dark-card p-6 rounded-xl shadow-lg border-t-4 border-secondary hover:shadow-2xl hover:scale-[1.005]">
-                <button class="accordion-header w-full text-left flex justify-between items-center py-2" data-target="content-importacion">
+            <section class="bg-white dark:bg-dark-card p-6 rounded-xl shadow-lg border-t-4 border-secondary hover:shadow-2xl hover:scale-[1.005] transition-shadow duration-300">
+                <button class="accordion-header w-full text-left flex justify-between items-center py-2" data-target="content-importacion" aria-expanded="false">
                     <h2 class="text-xl sm:text-2xl font-semibold text-gray-800 dark:text-gray-100">
-                        2. 🚢 Importación, Aduanas y Seguridad del Producto
+                        2. 🚢 Importación, Aduanas y <span class="font-bold text-secondary dark:text-accent">Seguridad del Producto</span>
                     </h2>
-                    <span class="text-secondary dark:text-accent text-2xl transform transition-transform duration-300">
+                    <span class="accordion-icon text-secondary dark:text-accent text-2xl transform transition-transform duration-300">
                         +
                     </span>
                 </button>
                 <div id="content-importacion" class="accordion-content pt-4 text-gray-700 dark:text-gray-300">
                     <p class="mb-4 font-medium">
-                        La legalidad del producto recae en el **importador**. ¡Un buen asesor debe conocer los riesgos!
+                        La legalidad del producto recae en el <span class="font-extrabold text-primary">importador</span>.
                     </p>
 
                     <div class="space-y-4 border-l-4 border-primary dark:border-accent pl-4">
                         <h3 class="text-lg font-bold text-secondary dark:text-gray-100">A. Documentación Obligatoria y Puntos Críticos 📑</h3>
                         <ul class="list-disc ml-6 space-y-2">
                             <li>
-                                <strong>Factura Comercial & *Packing List*:</strong> Documentos base para el despacho.
+                                <span class="font-bold">Factura Comercial & Packing List:</span> Documentos base.
                             </li>
                             <li>
-                                <strong>Código TARIC:</strong> La clasificación arancelaria que determina impuestos (arancel e IVA).
+                                <span class="font-bold text-primary">Código TARIC:</span> Clasificación arancelaria que determina impuestos.
                             </li>
                             <li>
-                                <strong>*Incoterms* (Básico):</strong>
-                                <ul class="list-circle ml-6 mt-1 space-y-1">
-                                    <li>**FOB:** Típico en importación. Vendedor cubre costes hasta la carga a bordo.</li>
-                                    <li>**DDP:** **Evitar** en la medida de lo posible. Cede demasiado control fiscal y operativo al proveedor chino.
-                                    </li>
+                                <span class="font-bold">Incoterms (Básico):</span>
+                                <ul class="list-none ml-6 mt-1 space-y-1 text-sm">
+                                    <li><span class="font-semibold text-secondary">FOB:</span> Típico. Vendedor cubre costes hasta la carga a bordo.</li>
+                                    <li><span class="font-semibold text-red-500">DDP:</span> <span class="font-bold">Evitar</span>. Cede control fiscal al proveedor chino.</li>
                                 </ul>
                             </li>
                         </ul>
@@ -175,16 +178,16 @@
                         <h3 class="text-lg font-bold text-secondary dark:text-gray-100 pt-3">B. Certificados de Calidad (UE) y Seguridad (GPSR) 🛡️</h3>
                         <ul class="list-disc ml-6 space-y-3">
                             <li>
-                                <strong>Marcado CE:</strong> Obligatorio para la mayoría de productos. **¡El importador verifica su legitimidad!**
+                                <span class="font-bold text-primary">Marcado CE:</span> Obligatorio. ¡El <span class="font-extrabold">importador</span> verifica su legitimidad!
                             </li>
                             <li>
-                                <strong>💡 Clave:</strong> Siempre solicita y revisa la **Declaración de Conformidad (DoC)** del proveedor para validar el Marcado CE.
+                                <strong>💡 Clave:</strong> Siempre solicita y revisa la <span class="font-bold text-accent">Declaración de Conformidad (DoC)</span> para validar el Marcado CE.
                             </li>
                             <li>
-                                <strong>REACH & RoHS:</strong> Restricción de químicos y sustancias peligrosas (aplicable a textiles, electrónica).
+                                <span class="font-bold">REACH & RoHS:</span> Restricción de químicos peligrosos.
                             </li>
                             <li>
-                                <strong>GPSR (*General Product Safety Regulation*):</strong> Nueva normativa que refuerza la seguridad. El *ecommerce* debe asegurar que los productos son seguros y conformes, y que se toman medidas de trazabilidad.
+                                <span class="font-bold text-secondary">GPSR (General Product Safety Regulation):</span> Nueva normativa que exige asegurar la <span class="font-extrabold">seguridad</span> y trazabilidad de los productos.
                             </li>
                         </ul>
                     </div>
@@ -192,50 +195,47 @@
             </section>
 
             <!-- Sección 3: Plataforma Web y Marketing -->
-            <section class="bg-white dark:bg-dark-card p-6 rounded-xl shadow-lg border-t-4 border-accent hover:shadow-2xl hover:scale-[1.005]">
-                <button class="accordion-header w-full text-left flex justify-between items-center py-2" data-target="content-web">
+            <section class="bg-white dark:bg-dark-card p-6 rounded-xl shadow-lg border-t-4 border-accent hover:shadow-2xl hover:scale-[1.005] transition-shadow duration-300">
+                <button class="accordion-header w-full text-left flex justify-between items-center py-2" data-target="content-web" aria-expanded="false">
                     <h2 class="text-xl sm:text-2xl font-semibold text-gray-800 dark:text-gray-100">
-                        3. 💻 Web, Conversión y Tendencias 2025
+                        3. 💻 Web, Conversión y <span class="font-bold text-accent">Tendencias 2025</span>
                     </h2>
-                    <span class="text-accent dark:text-accent text-2xl transform transition-transform duration-300">
+                    <span class="accordion-icon text-accent dark:text-accent text-2xl transform transition-transform duration-300">
                         +
                     </span>
                 </button>
                 <div id="content-web" class="accordion-content pt-4 text-gray-700 dark:text-gray-300">
                     <p class="mb-4 font-medium">
-                        Tu tienda debe ser un motor de ventas optimizado y en línea con las tendencias futuras.
+                        Tu tienda debe ser un motor de ventas <span class="font-bold text-secondary">optimizado</span> y en línea con el futuro.
                     </p>
 
                     <div class="space-y-4 border-l-4 border-secondary dark:border-primary pl-4">
                         <h3 class="text-lg font-bold text-accent dark:text-gray-100">A. Funcionalidades Esenciales y UX 🚀</h3>
                         <ul class="list-disc ml-6 space-y-2">
                             <li>
-                                <strong>Diseño Mobile-First:</strong> El 60%+ de las ventas viene de móvil. La optimización es crítica.
+                                <span class="font-bold text-primary">Diseño Mobile-First:</span> <span class="font-bold text-accent">60%+</span> de las ventas viene de móvil.
                             </li>
                             <li>
-                                <strong>Checkout sin Fricción:</strong> Proceso de pago de pocos pasos, con opciones de pago rápido (*one-click*) y guardado de datos (cumpliendo PSD2).
+                                <span class="font-bold">Checkout sin Fricción:</span> Proceso de pocos pasos y opciones de pago rápido (<span class="font-semibold text-secondary">one-click</span>).
                             </li>
                             <li>
-                                <strong>SEO/Contenido:</strong> Fichas de producto enriquecidas y estrategia de contenido para atraer tráfico orgánico.
+                                <span class="font-bold">🤖 Hiperpersonalización:</span> Usa <span class="font-bold text-green-500">IA</span> para recomendaciones en tiempo real, mejorando la conversión.
                             </li>
                             <li>
-                                <strong>🤖 Hiperpersonalización:</strong> Usa IA (Inteligencia Artificial) para recomendaciones de productos en tiempo real, mejorando la conversión.
-                            </li>
-                            <li>
-                                <strong>🎥 Live Commerce:</strong> Considera integrar estrategias de venta en vivo (ej. TikTok Shop, YouTube Live) para aumentar la interacción y conversión inmediata.
+                                <span class="font-bold text-primary">🎥 Live Commerce:</span> Integra estrategias de venta en vivo (ej. TikTok Shop) para aumentar la interacción.
                             </li>
                         </ul>
                         
-                        <h3 class="text-lg font-bold text-accent dark:text-gray-100 pt-3">B. Integración de Plataforma y *Fulfillment* (*Huboo*) 🔗</h3>
+                        <h3 class="text-lg font-bold text-accent dark:text-gray-100 pt-3">B. Integración de Plataforma y Fulfillment 🔗</h3>
                         <p class="italic text-sm">
-                            El foco debe estar en la automatización del flujo de datos:
+                            El foco debe estar en la <span class="font-bold">automatización</span> del flujo de datos:
                         </p>
                         <ul class="list-disc ml-6 space-y-2">
                             <li>
-                                <strong>Sincronización WMS:</strong> La plataforma (*Shopify, WooCommerce, etc.*) debe integrar su API o *plugin* con el sistema de gestión de almacén (*WMS*) del 3PL (como Huboo) para automatizar: pedidos, *stock* y números de seguimiento.
+                                <span class="font-bold">Sincronización WMS:</span> Conectar la plataforma (<span class="font-semibold">Shopify, WooCommerce, etc.</span>) con el sistema de gestión de almacén del 3PL.
                             </li>
                             <li>
-                                <strong>Uptime y Velocidad:</strong> El *hosting* debe ser robusto y garantizar la máxima disponibilidad (99.9%+) para no perder ventas en picos de tráfico.
+                                <span class="font-bold text-secondary">Uptime y Velocidad:</span> Garantizar la máxima disponibilidad (<span class="font-bold">99.9%+</span>) para no perder ventas.
                             </li>
                         </ul>
                     </div>
@@ -243,32 +243,29 @@
             </section>
 
              <!-- Sección 4: Nota sobre Logística (3PL) -->
-            <section class="bg-white dark:bg-dark-card p-6 rounded-xl shadow-lg border-t-4 border-gray-400 hover:shadow-2xl hover:scale-[1.005]">
-                <button class="accordion-header w-full text-left flex justify-between items-center py-2" data-target="content-logistica">
+            <section class="bg-white dark:bg-dark-card p-6 rounded-xl shadow-lg border-t-4 border-gray-400 hover:shadow-2xl hover:scale-[1.005] transition-shadow duration-300">
+                <button class="accordion-header w-full text-left flex justify-between items-center py-2" data-target="content-logistica" aria-expanded="false">
                     <h2 class="text-xl sm:text-2xl font-semibold text-gray-800 dark:text-gray-100">
-                        4. 📦 Logística Básica y Asesoría al Cliente
+                        4. 📦 Logística Básica y <span class="font-bold">Asesoría al Cliente</span>
                     </h2>
-                    <span class="text-gray-600 dark:text-gray-400 text-2xl transform transition-transform duration-300">
+                    <span class="accordion-icon text-gray-600 dark:text-gray-400 text-2xl transform transition-transform duration-300">
                         +
                     </span>
                 </button>
                 <div id="content-logistica" class="accordion-content pt-4 text-gray-700 dark:text-gray-300">
-                    <p class="mb-4 text-sm italic font-medium">
-                        Asumimos tu experiencia en 3PL. Aquí lo básico para la experiencia del cliente final:
-                    </p>
                     <h3 class="text-lg font-bold text-gray-700 dark:text-gray-100">Puntos de Venta Logísticos:</h3>
                     <ul class="list-disc ml-6 space-y-2">
                         <li>
-                            <strong>✈️ Velocidad:</strong> Ofrecer envíos Estándar vs. Express con tarifas claras.
+                            <span class="font-bold">✈️ Velocidad:</span> Ofrecer envíos <span class="font-semibold">Estándar vs. Express</span> con tarifas claras.
                         </li>
                         <li>
-                            <strong>📍 Seguimiento (*Tracking*):</strong> El *tracking* debe ser visible, preciso y proactivo (notificaciones al cliente).
+                            <span class="font-bold">📍 Seguimiento (Tracking):</span> Debe ser <span class="font-semibold text-primary">preciso y proactivo</span>.
                         </li>
                         <li>
-                            <strong>💸 Tarifas:</strong> Estrategia de envíos: Envío gratuito por umbral (ej. +50€) vs. Tarifa plana.
+                            <span class="font-bold">💸 Tarifas:</span> Estrategia de envíos: <span class="font-semibold">Envío gratuito por umbral</span> (ej. +50€).
                         </li>
                         <li>
-                            <strong>🔄 Devoluciones:</strong> Política clara de **14 días naturales** para el desistimiento, especificando quién asume el coste.
+                            <span class="font-bold text-red-500">🔄 Devoluciones:</span> Política clara de <span class="font-bold">14 días naturales</span> para el desistimiento.
                         </li>
                     </ul>
                 </div>
@@ -278,7 +275,7 @@
         
         <!-- Pie de página -->
         <footer class="text-center mt-10 py-4 text-gray-500 dark:text-gray-400 text-sm">
-            <p>&copy; 2025 Guía de Consultoría *Ecommerce* en España. Desarrollado con 💖 y 💡.</p>
+            <p>Guía de Consultoría <span class="font-semibold text-primary dark:text-accent">Ecommerce</span> en España. Desarrollado con 💖 y 💡.</p>
         </footer>
 
     </div>
@@ -293,26 +290,28 @@
                 header.addEventListener('click', () => {
                     const targetId = header.getAttribute('data-target');
                     const content = document.getElementById(targetId);
-                    const icon = header.querySelector('span');
+                    const icon = header.querySelector('.accordion-icon');
                     
-                    // Cierra todos los demás
+                    const isExpanded = header.getAttribute('aria-expanded') === 'true' || false;
+
+                    // Cierra todos los demás acordeones
                     document.querySelectorAll('.accordion-content').forEach(c => {
+                        const otherHeader = document.querySelector(`[data-target="${c.id}"]`);
                         if (c.id !== targetId && c.classList.contains('active')) {
                             c.classList.remove('active');
-                            const otherIcon = document.querySelector(`[data-target="${c.id}"] span`);
-                            otherIcon.textContent = '+';
-                            otherIcon.classList.remove('rotate-45');
+                            otherHeader.setAttribute('aria-expanded', 'false');
+                            otherHeader.querySelector('.accordion-icon').textContent = '+';
                         }
                     });
 
                     // Abre o cierra el actual
                     content.classList.toggle('active');
+                    header.setAttribute('aria-expanded', !isExpanded);
+
                     if (content.classList.contains('active')) {
                         icon.textContent = '−'; // Cambia a un signo menos
-                        icon.classList.add('rotate-45');
                     } else {
                         icon.textContent = '+';
-                        icon.classList.remove('rotate-45');
                     }
                 });
             });
@@ -330,15 +329,20 @@
             const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
             const currentTheme = localStorage.getItem('theme');
 
-            if (currentTheme === 'dark' || (!currentTheme && prefersDark)) {
-                htmlTag.classList.add('dark');
-                sunIcon.classList.add('hidden');
-                moonIcon.classList.remove('hidden');
-            } else {
-                htmlTag.classList.remove('dark');
-                sunIcon.classList.remove('hidden');
-                moonIcon.classList.add('hidden');
-            }
+            const initializeTheme = () => {
+                if (currentTheme === 'dark' || (!currentTheme && prefersDark)) {
+                    htmlTag.classList.add('dark');
+                    sunIcon.classList.add('hidden');
+                    moonIcon.classList.remove('hidden');
+                } else {
+                    htmlTag.classList.remove('dark');
+                    sunIcon.classList.remove('hidden');
+                    moonIcon.classList.add('hidden');
+                }
+            };
+
+            initializeTheme();
+
 
             toggleButton.addEventListener('click', () => {
                 htmlTag.classList.toggle('dark');
