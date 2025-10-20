@@ -56,7 +56,9 @@
         }
         /* Estilo para el ícono de Acordeón (girar al abrir) */
         .accordion-header[aria-expanded="true"] .accordion-icon {
-            transform: rotate(45deg);
+            /* Usamos un signo de menos simple para mantener la coherencia visual con el resto del contenido */
+            content: '−';
+            transform: rotate(0deg); 
         }
     </style>
 </head>
@@ -142,7 +144,7 @@
                 </div>
             </section>
 
-            <!-- Sección 2: Importación y Aduanas (China) -->
+            <!-- Sección 2: Importación y Aduanas (China) - INFORMACIÓN AMPLIADA -->
             <section class="bg-white dark:bg-dark-card p-6 rounded-xl shadow-lg border-t-4 border-secondary hover:shadow-2xl hover:scale-[1.005] transition-shadow duration-300">
                 <button class="accordion-header w-full text-left flex justify-between items-center py-2" data-target="content-importacion" aria-expanded="false">
                     <h2 class="text-xl sm:text-2xl font-semibold text-gray-800 dark:text-gray-100">
@@ -154,40 +156,63 @@
                 </button>
                 <div id="content-importacion" class="accordion-content pt-4 text-gray-700 dark:text-gray-300">
                     <p class="mb-4 font-medium">
-                        La legalidad del producto recae en el <span class="font-extrabold text-primary">importador</span>.
+                        La legalidad del producto recae en el <span class="font-extrabold text-primary">importador (establecido en la UE)</span>. Un desconocimiento aduanero/fiscal puede suponer el colapso del negocio.
                     </p>
 
-                    <div class="space-y-4 border-l-4 border-primary dark:border-accent pl-4">
-                        <h3 class="text-lg font-bold text-secondary dark:text-gray-100">A. Documentación Obligatoria y Puntos Críticos 📑</h3>
-                        <ul class="list-disc ml-6 space-y-2">
+                    <div class="space-y-6 border-l-4 border-primary dark:border-accent pl-4">
+                        
+                        <h3 class="text-lg font-bold text-secondary dark:text-gray-100">A. Gestión de IVA en Importaciones (IOSS y Despacho) 💰</h3>
+                        <p class="text-sm italic font-medium">
+                            Desde 2021, la exención de IVA para envíos <span class="font-bold text-red-500">inferiores a 22€ fue eliminada</span>. Todos los productos pagan IVA.
+                        </p>
+                        <ul class="list-disc ml-6 space-y-3">
                             <li>
-                                <span class="font-bold">Factura Comercial & Packing List:</span> Documentos base.
+                                <span class="font-bold text-primary">IOSS (Import One Stop Shop):</span> Régimen <span class="font-extrabold text-green-500">Opcional</span> para envíos B2C de <span class="font-extrabold">valor igual o inferior a 150€</span> (sin impuestos de envío).
+                                <ul class="list-none ml-6 mt-1 space-y-1 text-sm">
+                                    <li><span class="font-semibold text-secondary">Ventaja:</span> Cobras el IVA al cliente en el momento de la venta y lo liquidas mensualmente a través de la IOSS. El envío pasa Aduanas sin pagar IVA, <span class="font-bold text-primary">evitando demoras</span>.</li>
+                                    <li><span class="font-semibold text-red-500">Obligación:</span> Si la empresa no está establecida en la UE (ej. proveedor de China), debe designar un <span class="font-extrabold">Intermediario IOSS</span> en la UE (Gestoría).</li>
+                                </ul>
                             </li>
                             <li>
-                                <span class="font-bold text-primary">Código TARIC:</span> Clasificación arancelaria que determina impuestos.
+                                <span class="font-bold text-primary">Envíos > 150€ (DUA):</span> Se debe realizar un <span class="font-extrabold">Documento Único Administrativo (DUA)</span>. El cliente final paga el IVA (y aranceles, si aplican) a la empresa de transporte en destino. <span class="font-bold text-red-500">Riesgo de abandono de paquetes</span> por el cliente.
+                            </li>
+                        </ul>
+
+                        <h3 class="text-lg font-bold text-secondary dark:text-gray-100 pt-3">B. Documentación y Control Aduanero 📑</h3>
+                        <ul class="list-disc ml-6 space-y-3">
+                            <li>
+                                <span class="font-bold">Factura Comercial & Packing List:</span> Documentos base para el despacho.
+                            </li>
+                            <li>
+                                <span class="font-bold text-primary">Código TARIC:</span> Clasificación arancelaria que determina impuestos y posibles medidas de restricción.
                             </li>
                             <li>
                                 <span class="font-bold">Incoterms (Básico):</span>
                                 <ul class="list-none ml-6 mt-1 space-y-1 text-sm">
                                     <li><span class="font-semibold text-secondary">FOB:</span> Típico. Vendedor cubre costes hasta la carga a bordo.</li>
-                                    <li><span class="font-semibold text-red-500">DDP:</span> <span class="font-bold">Evitar</span>. Cede control fiscal al proveedor chino.</li>
+                                    <li><span class="font-semibold text-red-500">DDP:</span> <span class="font-bold">Evitar</span>. Cede control fiscal y aduanero (riesgoso) al proveedor chino, dificultando la declaración como importador UE.</li>
                                 </ul>
                             </li>
                         </ul>
                         
-                        <h3 class="text-lg font-bold text-secondary dark:text-gray-100 pt-3">B. Certificados de Calidad (UE) y Seguridad (GPSR) 🛡️</h3>
+                        <h3 class="text-lg font-bold text-secondary dark:text-gray-100 pt-3">C. Certificados de Calidad (UE) y Seguridad (GPSR) 🛡️</h3>
                         <ul class="list-disc ml-6 space-y-3">
                             <li>
-                                <span class="font-bold text-primary">Marcado CE:</span> Obligatorio. ¡El <span class="font-extrabold">importador</span> verifica su legitimidad!
+                                <span class="font-bold text-primary">Marcado CE:</span> Obligatorio. ¡El <span class="font-extrabold">importador</span> verifica su legitimidad y debe disponer de la documentación técnica!
                             </li>
                             <li>
                                 <strong>💡 Clave:</strong> Siempre solicita y revisa la <span class="font-bold text-accent">Declaración de Conformidad (DoC)</span> para validar el Marcado CE.
                             </li>
                             <li>
-                                <span class="font-bold">REACH & RoHS:</span> Restricción de químicos peligrosos.
+                                <span class="font-bold">REACH & RoHS:</span> Restricción de químicos peligrosos (aplicable a electrónica y textiles).
                             </li>
                             <li>
-                                <span class="font-bold text-secondary">GPSR (General Product Safety Regulation):</span> Nueva normativa que exige asegurar la <span class="font-extrabold">seguridad</span> y trazabilidad de los productos.
+                                <span class="font-bold text-secondary">GPSR (General Product Safety Regulation, 2023/988):</span> Nueva normativa de seguridad que exige:
+                                <ul class="list-none ml-6 mt-1 space-y-1 text-sm">
+                                    <li><span class="font-semibold text-accent">Trazabilidad:</span> El producto debe llevar <span class="font-bold">número de lote o serie</span>.</li>
+                                    <li><span class="font-semibold text-accent">Etiquetado:</span> Incluir el <span class="font-bold">contacto físico y digital</span> del importador/responsable.</li>
+                                    <li><span class="font-semibold text-accent">Representante:</span> Si el vendedor está fuera de la UE, debe haber un <span class="font-bold">Responsable Económico</span> establecido en la UE.</li>
+                                </ul>
                             </li>
                         </ul>
                     </div>
